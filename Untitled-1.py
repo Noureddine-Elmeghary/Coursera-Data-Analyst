@@ -8,6 +8,8 @@ tesla_data.reset_index(inplace=True)
 
 # Display the first 5 rows
 print(tesla_data.head())
+
+#Question 2
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -48,7 +50,7 @@ for row in tesla_revenue_table.tbody.find_all("tr"):
 # Display the last five rows
 print(tesla_revenue.tail())
 
-#q1
+#Question 3
 import yfinance as yf
 
 # Download GameStop stock data
@@ -60,7 +62,7 @@ gme_data.reset_index(inplace=True)
 # Display the first five rows
 print(gme_data.head())
 
-#q2
+#Question 4
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -99,7 +101,22 @@ for row in gme_revenue_table.tbody.find_all("tr"):
 # Display the last five rows
 print(gme_revenue.tail())
 
-#q6
+#Question 5
+import matplotlib.pyplot as plt
+
+def make_graph(data, stock, title):
+    plt.figure(figsize=(10,6))
+    plt.plot(data['Date'], data['Close'], label=f"{stock} Closing Price")
+    plt.title(title)
+    plt.xlabel('Date')
+    plt.ylabel('Stock Price (USD)')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+    make_graph(tesla_data, 'TSLA', 'Tesla Stock Price Over Time')
+
+
+#question 6
 import matplotlib.pyplot as plt
 
 def make_graph(data, stock, title):
@@ -112,3 +129,4 @@ def make_graph(data, stock, title):
     plt.grid(True)
     plt.show()
 make_graph(gme_data, 'GME', 'GameStop Stock Price Over Time')
+
